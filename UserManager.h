@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <vector>
 #include "User.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -17,6 +18,10 @@ class UserManager
 
 public:
     void registerUser();
+    void loginUser();
+
+
+    void displayAllUsers();
 
 
 

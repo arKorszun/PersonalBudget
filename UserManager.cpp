@@ -20,12 +20,12 @@ User UserManager::enterUserData() {
     string login;
     do {
         cout << "\nEnter login:\n";
-        cin >> login;
+        login = Utils::getLine();
         user.login = login;
     } while (checkIfLoginExist(login) == true);
     string password;
     cout << "\nEnter password:\n";
-    cin >> password;
+    password = Utils::getLine();
     user.password = password;
     return user;
 }
@@ -39,4 +39,43 @@ bool UserManager::checkIfLoginExist(string &login) {
         }
     }
     return false;
+}
+
+void UserManager::loginUser() {
+    User user;
+    string login = "", password = "";
+    loggedUserId = 0;
+    cout << "\nEnter login:\n";
+    login = Utils::getLine();
+
+    for (size_t i = 0; i < users.size(); i++ ) {
+        if (users[i].login == login) {
+            for (int attemptsNum = 3; attemptsNum > 0; attemptsNum--) {
+                cout << "Enter password, attempts left: " << attemptsNum << ": ";
+                password = Utils::getLine();
+
+                if (users[i].password == password) {
+                    cout << endl << "Logging successful! Welcome " << login << endl << endl;
+                    this->loggedUserId = users[i].id;
+                    system("pause");
+                    return;
+                }
+            }
+            cout << "\nYou have entered wrong password 3 times!" << endl;
+            system("pause");
+            return;
+        }
+    }
+    cout << "\nEntered login does not exist" << endl << endl;
+    system("pause");
+    return;
+}
+
+void UserManager::displayAllUsers() {
+    for (size_t i = 0; i < users.size(); i++ ) {
+        cout << users[i].id << endl;
+        cout << users[i].login << endl;
+        cout << users[i].password<< endl;
+
+    }
 }
