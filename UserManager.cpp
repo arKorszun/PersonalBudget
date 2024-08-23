@@ -3,7 +3,7 @@
 void UserManager::registerUser() {
     User user = enterUserData();
     users.push_back(user);
-
+    userFile.addUserToFile(user);
     cout << "\nNew account successfully added!\n" << endl;
     system("pause");
 }
@@ -61,12 +61,12 @@ void UserManager::loginUser() {
                     return;
                 }
             }
-            cout << "\nYou have entered wrong password 3 times!" << endl;
+            cout << "\nYou've entered wrong password 3 times!" << endl;
             system("pause");
             return;
         }
     }
-    cout << "\nEntered login does not exist" << endl << endl;
+    cout << "\nEntered login doesn't exist" << endl << endl;
     system("pause");
     return;
 }
