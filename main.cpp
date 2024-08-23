@@ -12,5 +12,6 @@ int main()
     userManager.displayAllUsers();
     userManager.loginUser();
     userManager.displayLoggedUserId();
+    userManager.changeUserPassword();
     return 0;
 }

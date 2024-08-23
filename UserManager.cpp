@@ -71,6 +71,25 @@ void UserManager::loginUser() {
     return;
 }
 
+void UserManager::changeUserPassword() {
+    string newPassword = "";
+    bool isPasswordChanged = false;
+    cout << "\nEnter new password\n";
+    newPassword = Utils::getLine();
+
+    for (size_t i = 0; i < users.size(); i++ ) {
+        if (users[i].id == loggedUserId) {
+            users[i].password = newPassword;
+            isPasswordChanged = userFile.changePasswordInFile(loggedUserId, newPassword);
+        }
+    }
+    if (isPasswordChanged){
+        cout <<"\nPassword updated\n";
+    } else {
+    cout <<"\nSomething went wrong! Password has not been updated \n";
+    }
+}
+
 void UserManager::displayAllUsers() {
     for (size_t i = 0; i < users.size(); i++ ) {
         cout << users[i].id << endl;
@@ -79,5 +98,6 @@ void UserManager::displayAllUsers() {
 
     }
 }
-void UserManager::displayLoggedUserId(){
-cout << loggedUserId << endl; }
+void UserManager::displayLoggedUserId() {
+    cout << loggedUserId << endl;
+}

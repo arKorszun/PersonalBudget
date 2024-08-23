@@ -22,6 +22,7 @@ public:
     users = userFile.loadUsersFromFile();}
     void registerUser();
     void loginUser();
+    void changeUserPassword();
 
 
     void displayAllUsers();

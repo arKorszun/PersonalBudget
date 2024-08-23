@@ -24,7 +24,6 @@ vector <User> UserFile::loadUsersFromFile() {
     bool fileExists = xml.Load( "users.xml" );
     string userIdTemp = "";
     if (!fileExists) {
-        cout << "Plik nie istnieje";
     } else {
         xml.ResetPos();
         xml.FindElem(); // root USERS element
@@ -43,4 +42,32 @@ vector <User> UserFile::loadUsersFromFile() {
         }
     }
     return users;
+}
+
+bool UserFile::changePasswordInFile(int id, string password) {
+
+    bool fileExists = xml.Load( "users.xml" );
+    string tempString = "";
+    int userId = 0;
+    if (!fileExists) {
+        cout << "File doesn't exist";
+    } else {
+        xml.ResetPos();
+        xml.FindElem(); // root USERS element
+        xml.IntoElem(); // inside USERS
+        while ( xml.FindElem("User") ) {
+            xml.IntoElem();  // inside USER
+            xml.FindElem( "UserId" );
+            tempString = xml.GetData();
+            userId = stoi(tempString);
+            if (userId == id) {
+                xml.FindElem( "Password" );
+                xml.RemoveElem();
+                xml.AddElem("Password", password);
+                xml.Save("users.xml");
+                return true;
+            } else xml.OutOfElem(); // get back to USERS
+        }
+    }
+    return false;
 }
