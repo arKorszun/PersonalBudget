@@ -18,11 +18,14 @@ class UserManager
     bool checkIfLoginExist(string &login);
 
 public:
+    UserManager(){
+    users = userFile.loadUsersFromFile();}
     void registerUser();
     void loginUser();
 
 
     void displayAllUsers();
+    void displayLoggedUserId();
 
 
 

@@ -10,6 +10,7 @@ class UserFile{
     CMarkup xml;
 public:
     void addUserToFile(User user);
+    vector <User> loadUsersFromFile();
 
 };
 

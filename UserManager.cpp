@@ -79,3 +79,5 @@ void UserManager::displayAllUsers() {
 
     }
 }
+void UserManager::displayLoggedUserId(){
+cout << loggedUserId << endl; }

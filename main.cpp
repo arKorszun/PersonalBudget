@@ -7,10 +7,10 @@ int main()
 {
     UserManager userManager;
 
-    userManager.registerUser();
-    userManager.registerUser();
+    //userManager.registerUser();
+    //userManager.registerUser();
     userManager.displayAllUsers();
     userManager.loginUser();
-    cout << "Hello world!" << endl;
+    userManager.displayLoggedUserId();
     return 0;
 }
