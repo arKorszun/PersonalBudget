@@ -18,7 +18,7 @@ class UserManager
     bool checkIfLoginExist(string &login);
 
 public:
-    UserManager(){
+    UserManager(string userFileName):userFile(userFileName){
     users = userFile.loadUsersFromFile();}
     void registerUser();
     void loginUser();

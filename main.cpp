@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    UserManager userManager;
+    UserManager userManager("users.xml");
 
     //userManager.registerUser();
     //userManager.registerUser();
