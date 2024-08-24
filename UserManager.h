@@ -23,6 +23,7 @@ public:
     void registerUser();
     void loginUser();
     void changeUserPassword();
+    bool isUserLoggedIn();
 
 
     void displayAllUsers();

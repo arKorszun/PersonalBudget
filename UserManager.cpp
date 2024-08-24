@@ -90,6 +90,12 @@ void UserManager::changeUserPassword() {
     }
 }
 
+bool UserManager::isUserLoggedIn(){
+if (loggedUserId !=0) return true;
+else return false;
+
+}
+
 void UserManager::displayAllUsers() {
     for (size_t i = 0; i < users.size(); i++ ) {
         cout << users[i].id << endl;

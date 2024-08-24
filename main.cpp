@@ -1,17 +1,18 @@
 #include <iostream>
+#include "BudgetMainApp.h"
 #include "UserManager.h"
 
 using namespace std;
 
 int main()
 {
-    UserManager userManager("users.xml");
+    BudgetMainApp budgetMainApp("users.xml");
 
+    budgetMainApp.registerUser();
     //userManager.registerUser();
-    //userManager.registerUser();
-    userManager.displayAllUsers();
-    userManager.loginUser();
-    userManager.displayLoggedUserId();
-    userManager.changeUserPassword();
+    //userManager.displayAllUsers();
+    budgetMainApp.loginUser();
+    //userManager.displayLoggedUserId();
+    budgetMainApp.changeUserPassword();
     return 0;
 }
