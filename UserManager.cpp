@@ -11,20 +11,28 @@ void UserManager::registerUser() {
 User UserManager::enterUserData() {
 
     User user;
+    string login = "", name = "", surname = "";
+
+    cout << "\nEnter your name: ";
+        name = Utils::getLine();
+        user.name = name;
+        cout << "\nEnter your surname: ";
+        surname = Utils::getLine();
+        user.surname = surname;
 
     if (users.empty() == true)
         user.id = 1;
     else
         user.id = users.back().id + 1;
 
-    string login;
+
     do {
-        cout << "\nEnter login:\n";
+        cout << "\nEnter login: ";
         login = Utils::getLine();
         user.login = login;
     } while (checkIfLoginExist(login) == true);
     string password;
-    cout << "\nEnter password:\n";
+    cout << "\nEnter password: ";
     password = Utils::getLine();
     user.password = password;
     return user;
@@ -55,7 +63,7 @@ void UserManager::loginUser() {
                 password = Utils::getLine();
 
                 if (users[i].password == password) {
-                    cout << endl << "Logging successful! Welcome " << login << endl << endl;
+                    cout << endl << "Logging successful! Welcome " << users[i].name << " " << users[i].surname << endl << endl;
                     this->loggedUserId = users[i].id;
                     system("pause");
                     return;

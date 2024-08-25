@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Operation.h"
+#include "OperationFile.h"
 
 using namespace std;
 

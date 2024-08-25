@@ -12,6 +12,8 @@ void UserFile::addUserToFile(User user) {
     xml.IntoElem(); // inside USERS
     xml.AddElem("User");
     xml.IntoElem();
+    xml.AddElem("Name", user.name);
+    xml.AddElem("Surname", user.surname);
     xml.AddElem("UserId", user.id);
     xml.AddElem("Login", user.login);
     xml.AddElem("Password", user.password);
@@ -30,6 +32,10 @@ vector <User> UserFile::loadUsersFromFile() {
         xml.IntoElem(); // inside USERS
         while ( xml.FindElem("User") ) {
             xml.IntoElem();  // inside USER
+            xml.FindElem( "Name" );
+            user.name = xml.GetData();
+            xml.FindElem( "Surname" );
+            user.surname = xml.GetData();
             xml.FindElem( "UserId" );
             userIdTemp = xml.GetData();
             user.id = stoi(userIdTemp);
