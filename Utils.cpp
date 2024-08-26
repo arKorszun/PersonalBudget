@@ -20,3 +20,13 @@ char Utils::getCharacter() {
     }
     return character;
 }
+
+string Utils::stringToIntConversion (int integer)
+{
+    ostringstream ss;
+    ss << integer;
+    string str = ss.str();
+    return str;
+}
+
+

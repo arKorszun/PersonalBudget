@@ -1,8 +1,10 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 
+using namespace std;
+
 struct Operation{
-int id, UserId, date;
+int id, userId, date;
 string item;
 double amount;
 };

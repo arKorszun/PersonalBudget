@@ -3,21 +3,24 @@
 
 
 #include "UserManager.h"
+#include "DateMethods.h"
 
 using namespace std;
 
 int main()
 {
+
     BudgetMainApp budgetMainApp("users.xml");
+    UserManager userManager("users.xml");
 
-    budgetMainApp.registerUser();
+   budgetMainApp.registerUser();
     //userManager.registerUser();
-    //userManager.displayAllUsers();
-    budgetMainApp.loginUser();
+    userManager.displayAllUsers();
+   // budgetMainApp.loginUser();
     //userManager.displayLoggedUserId();
-    budgetMainApp.changeUserPassword();
+    //budgetMainApp.changeUserPassword();
 
-    char choice;
+   // char choice;
 
    /* while (true)
     {

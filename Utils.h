@@ -10,6 +10,7 @@ class Utils{
 public:
     static char getCharacter();
     static string getLine();
+    static string stringToIntConversion(int integer);
 
 };
 

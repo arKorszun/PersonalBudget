@@ -16,7 +16,7 @@ User UserManager::enterUserData() {
     cout << "\nEnter your name: ";
         name = Utils::getLine();
         user.name = name;
-        cout << "\nEnter your surname: ";
+        cout << "Enter your surname: ";
         surname = Utils::getLine();
         user.surname = surname;
 
@@ -27,12 +27,12 @@ User UserManager::enterUserData() {
 
 
     do {
-        cout << "\nEnter login: ";
+        cout << "Enter login: ";
         login = Utils::getLine();
         user.login = login;
     } while (checkIfLoginExist(login) == true);
     string password;
-    cout << "\nEnter password: ";
+    cout << "Enter password: ";
     password = Utils::getLine();
     user.password = password;
     return user;
@@ -41,7 +41,7 @@ User UserManager::enterUserData() {
 bool UserManager::checkIfLoginExist(string &login) {
     for (size_t i = 0; i < users.size(); i++ ) {
         if (users[i].login == login) {
-            cout  << "\nEntered login exists, choose another\n" << endl;
+            cout  << "\nEntered login exists, choose another !\n" << endl;
             Sleep(600);
             return true;
         }
