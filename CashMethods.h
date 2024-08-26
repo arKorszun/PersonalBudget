@@ -6,7 +6,7 @@ using namespace std;
 
 class CashMethods {
 public:
-    static bool validateAmount(string &amount);
+    bool validateAmount(string &amount);
 
 
 };

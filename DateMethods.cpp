@@ -64,13 +64,13 @@ int DateMethods::getCurrentDate() {
     string yearSt = "", monthSt = "", daySt = "";
 
     dateMethods.calculateCurrentDate(currentDate);
-    yearSt = Utils::stringToIntConversion(currentDate["year"]);
+    yearSt = Utils::intToStringConversion(currentDate["year"]);
 
-    if(currentDate["month"] >= 10) monthSt = Utils::stringToIntConversion(currentDate["month"]);
-    else monthSt = '0' + Utils::stringToIntConversion(currentDate["month"]);
+    if(currentDate["month"] >= 10) monthSt = Utils::intToStringConversion(currentDate["month"]);
+    else monthSt = '0' + Utils::intToStringConversion(currentDate["month"]);
 
-    if(currentDate["day"] >= 10) daySt = Utils::stringToIntConversion(currentDate["day"]);
-    else daySt = '0' + Utils::stringToIntConversion(currentDate["day"]);
+    if(currentDate["day"] >= 10) daySt = Utils::intToStringConversion(currentDate["day"]);
+    else daySt = '0' + Utils::intToStringConversion(currentDate["day"]);
 
     currentDateString = yearSt + monthSt + daySt;
 
@@ -89,6 +89,71 @@ void DateMethods::calculateCurrentDate(map <string, int> &currentDate) {
     currentDate["year"] = year;
     currentDate["month"] = month;
     currentDate["day"] = day;
+}
+
+int DateMethods::getCurrentMonthFirstDayDate(){
+    map <string, int> currentDate;
+    string currentMonthFirstDayDateSt;
+    string yearSt = "", monthSt = "", daySt = "";
+    DateMethods dateMethods;
+    dateMethods.calculateCurrentDate(currentDate);
+
+    yearSt = Utils::intToStringConversion(currentDate["year"]);
+    if(currentDate["month"] >= 10) monthSt = Utils::intToStringConversion(currentDate["month"]);
+    else monthSt = '0' + Utils::intToStringConversion(currentDate["month"]);
+    daySt = "01";
+
+    currentMonthFirstDayDateSt = yearSt + monthSt + daySt;
+    return dateMethods.convertStringDateToInt(currentMonthFirstDayDateSt);
+}
+
+int DateMethods::getPreviousMonthLastDayDate(){
+    map <string, int> currentDate;
+    string previousMonthLastDayDateSt;
+    string yearSt = "", monthSt = "", daySt = "";
+    int month = 0;
+    DateMethods dateMethods;
+    dateMethods.calculateCurrentDate(currentDate);
+
+    month = currentDate["month"]-1;
+    yearSt = Utils::intToStringConversion(currentDate["year"]);
+    if(month >= 10) monthSt = Utils::intToStringConversion(month);
+    else monthSt = '0' + Utils::intToStringConversion(month);
+    if (( month == 4 || month == 6 || month == 9 || month == 11 )) daySt = "30";
+    else if (month == 2 && dateMethods.isYearLeap(currentDate["year"])) daySt = "29";
+    else if (month == 2 && !dateMethods.isYearLeap(currentDate["year"])) daySt = "28";
+    else daySt = "31";
+
+    previousMonthLastDayDateSt = yearSt + monthSt + daySt;
+    return dateMethods.convertStringDateToInt(previousMonthLastDayDateSt);
+}
+
+int DateMethods::getPreviousMonthFirstDayDate(){
+    map <string, int> currentDate;
+    string previousMonthFirstDayDateSt;
+    string yearSt = "", monthSt = "", daySt = "";
+    int month = 0;
+    DateMethods dateMethods;
+    dateMethods.calculateCurrentDate(currentDate);
+
+    month = currentDate["month"]-1;
+    yearSt = Utils::intToStringConversion(currentDate["year"]);
+    if(month >= 10) monthSt = Utils::intToStringConversion(month);
+    else monthSt = '0' + Utils::intToStringConversion(month);
+    daySt = "01";
+
+    previousMonthFirstDayDateSt = yearSt + monthSt + daySt;
+    return dateMethods.convertStringDateToInt(previousMonthFirstDayDateSt);
+}
+
+string DateMethods::convertIntDateToStringWithDashes(int dateAsInt){//const do testu
+    //20240826
+    string dateAsStringWithDashes = "", dateAsString = "";
+    dateAsString = Utils::intToStringConversion(dateAsInt);
+    dateAsStringWithDashes = dateAsString.insert(4,"-");
+    dateAsStringWithDashes = dateAsStringWithDashes.insert(7,"-");
+    return dateAsStringWithDashes;
+
 }
 
 

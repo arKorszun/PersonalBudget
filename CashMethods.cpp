@@ -1,7 +1,6 @@
 #include "CashMethods.h"
 
-bool CashMethods::validateAmount(string &amount){ //add implementation
-// 150.50 z 150,50
+bool CashMethods::validateAmount(string &amount){
     for ( size_t i = 0; i < amount.length(); i++ ){
         if (amount[i] == ',') amount[i] = '.';
     }
@@ -9,4 +8,5 @@ bool CashMethods::validateAmount(string &amount){ //add implementation
             cout << "Amount have to be higher than 0! ";
             return false;
     }
+    return true;
 }

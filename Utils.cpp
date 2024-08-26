@@ -21,7 +21,7 @@ char Utils::getCharacter() {
     return character;
 }
 
-string Utils::stringToIntConversion (int integer)
+string Utils::intToStringConversion (int integer)
 {
     ostringstream ss;
     ss << integer;

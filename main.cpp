@@ -9,17 +9,20 @@ using namespace std;
 
 int main()
 {
+ int data = 20240826;
+ DateMethods datee;
+string d = datee.convertIntDateToStringWithDashes(data);
 
-    BudgetMainApp budgetMainApp("users.xml");
-    UserManager userManager("users.xml");
+   // BudgetMainApp budgetMainApp("users.xml");
+   // UserManager userManager("users.xml");
 
-   budgetMainApp.registerUser();
+  // budgetMainApp.registerUser();
     //userManager.registerUser();
-    userManager.displayAllUsers();
+    //userManager.displayAllUsers();
    // budgetMainApp.loginUser();
     //userManager.displayLoggedUserId();
     //budgetMainApp.changeUserPassword();
-
+cout << d;
    // char choice;
 
    /* while (true)
