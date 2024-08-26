@@ -43,7 +43,7 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
         cout << "Enter " << typeDescription << " date (yyyy-mm-dd). Type 't' if you want to enter current date: ";
         tempDate = Utils::getLine();
         if (tempDate == "t"){
-            tempDate = dateMethods.getCurrentDate();
+            tempDate = dateMethods.convertIntDateToStringWithDashes(dateMethods.getCurrentDate());
             isDateValid = true;
         }
         else {

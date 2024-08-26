@@ -146,14 +146,12 @@ int DateMethods::getPreviousMonthFirstDayDate(){
     return dateMethods.convertStringDateToInt(previousMonthFirstDayDateSt);
 }
 
-string DateMethods::convertIntDateToStringWithDashes(int dateAsInt){//const do testu
-    //20240826
+string DateMethods::convertIntDateToStringWithDashes(int dateAsInt){
     string dateAsStringWithDashes = "", dateAsString = "";
     dateAsString = Utils::intToStringConversion(dateAsInt);
     dateAsStringWithDashes = dateAsString.insert(4,"-");
     dateAsStringWithDashes = dateAsStringWithDashes.insert(7,"-");
     return dateAsStringWithDashes;
-
 }
 
 
