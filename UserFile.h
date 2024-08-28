@@ -5,6 +5,7 @@
 #include "User.h"
 #include "Utils.h"
 #include "File.h"
+#include "Operation.h"
 
 class UserFile :public File {
     const string USER_FILE_NAME;

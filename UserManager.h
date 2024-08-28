@@ -20,10 +20,13 @@ class UserManager
 public:
     UserManager(string userFileName):userFile(userFileName){
     users = userFile.loadUsersFromFile();}
+
     void registerUser();
     void loginUser();
     void changeUserPassword();
     bool isUserLoggedIn();
+    void logoutUser();
+    int getLoggedUserId();
 
 
     void displayAllUsers();

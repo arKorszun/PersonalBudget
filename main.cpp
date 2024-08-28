@@ -1,88 +1,76 @@
 #include <iostream>
 #include "BudgetMainApp.h"
+#include "BudgetManager.h"
+#include "Menus.h"
 
-
-#include "UserManager.h"
-#include "DateMethods.h"
 
 using namespace std;
 
-int main()
-{
- int data = 20240826;
- DateMethods datee;
-string d = datee.convertIntDateToStringWithDashes(data);
+int main() {
+BudgetMainApp budgetMainApp("users.xml", "incomes.xml", "expenses.xml");
+BudgetManager budgetManager(1,"incomes.xml", "expenses.xml");
+budgetManager.addIncome();
+    return 0;
+}
 
-   // BudgetMainApp budgetMainApp("users.xml");
-   // UserManager userManager("users.xml");
 
-  // budgetMainApp.registerUser();
-    //userManager.registerUser();
-    //userManager.displayAllUsers();
-   // budgetMainApp.loginUser();
-    //userManager.displayLoggedUserId();
-    //budgetMainApp.changeUserPassword();
-cout << d;
-   // char choice;
 
-   /* while (true)
-    {
-        if (!budgetMainApp.isUserLoggedIn())
-        {
+/*int main() {
+    BudgetMainApp budgetMainApp("users.xml", "incomes.xml", "expenses.xml");
+    char choice;
+
+    while (true) {
+        if (!budgetMainApp.isUserLoggedIn()) {
+            Menus::showMainMenu();
             choice = Utils::getCharacter();
 
-            switch (wybor)
-            {
+            switch (choice) {
             case '1':
-                //ksiazkaAdresowa.rejestracjaUzytkownika();
+                budgetMainApp.registerUser();
                 break;
             case '2':
-                //ksiazkaAdresowa.logowanieUzytkownika();
+                budgetMainApp.loginUser();
                 break;
             case '9':
                 exit(0);
                 break;
             default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                cout << endl << "You have chosen an option that doesn't exist ." << endl << endl;
                 system("pause");
                 break;
             }
-        }
-        else
-        {
-            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
+        } else {
+            Menus::showUserMenu();
+            choice = Utils::getCharacter();
 
-            switch (wybor)
-            {
+            switch (choice) {
             case '1':
-                //ksiazkaAdresowa.dodajAdresata();
+                //Add Income
                 break;
             case '2':
-                //ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+                //Add Expense
                 break;
             case '3':
-                //ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                //Show current month balance
                 break;
             case '4':
-                //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                //Show previous month balance
                 break;
             case '5':
-               // ksiazkaAdresowa.usunAdresata();
-                break;
-            case '6':
-                //ksiazkaAdresowa.edytujAdresata();
-                break;
-            case '7':
-               // ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                // Show custom period balance
                 break;
             case '8':
-               // ksiazkaAdresowa.wylogujUzytkownika();
+                // change password
+                break;
+            case '9':
+                // logout
+                break;
+            default:
+                cout << endl << "You have chosen an option that doesn't exist ." << endl << endl;
+                system("pause");
                 break;
             }
         }
     }
     return 0;
 }*/
-
-    return 0;
-}

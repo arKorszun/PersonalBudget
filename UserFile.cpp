@@ -2,7 +2,7 @@
 
 void UserFile::addUserToFile(User user) {
 
-    bool fileExists = xml.Load( "users.xml" );
+    bool fileExists = xml.Load( USER_FILE_NAME.c_str() );
 
     if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -17,13 +17,13 @@ void UserFile::addUserToFile(User user) {
     xml.AddElem("UserId", user.id);
     xml.AddElem("Login", user.login);
     xml.AddElem("Password", user.password);
-    xml.Save("users.xml");
+    xml.Save(USER_FILE_NAME.c_str());
 }
 
 vector <User> UserFile::loadUsersFromFile() {
     User user;
     vector <User> users;
-    bool fileExists = xml.Load( "users.xml" );
+    bool fileExists = xml.Load( USER_FILE_NAME.c_str() );
     string userIdTemp = "";
     if (!fileExists) {
     } else {
@@ -52,7 +52,7 @@ vector <User> UserFile::loadUsersFromFile() {
 
 bool UserFile::changePasswordInFile(int id, string password) {
 
-    bool fileExists = xml.Load( "users.xml" );
+    bool fileExists = xml.Load( USER_FILE_NAME.c_str() );
     string tempString = "";
     int userId = 0;
     if (!fileExists) {
@@ -70,7 +70,7 @@ bool UserFile::changePasswordInFile(int id, string password) {
                 xml.FindElem( "Password" );
                 xml.RemoveElem();
                 xml.AddElem("Password", password);
-                xml.Save("users.xml");
+                xml.Save(USER_FILE_NAME.c_str());
                 return true;
             } else xml.OutOfElem(); // get back to USERS
         }

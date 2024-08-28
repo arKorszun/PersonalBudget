@@ -7,8 +7,11 @@ bool DateMethods::validateDate(string &date) {
     string yearString = "", monthString = "", dayString = "";
     int year = 0, month = 0, day = 0;
 
-    if (date[4] != '-' || date[7] != '-' || date.length() !=10)
+    if (date[4] != '-' || date[7] != '-' || date.length() !=10) {
+        cout << "Invalid format. Try again" << endl;
         return false;
+
+    }
 
 
 
@@ -22,18 +25,51 @@ bool DateMethods::validateDate(string &date) {
     day = stoi(dayString);
     leapOrNot = dateMethods.isYearLeap(year);
 
-    if (year < 2000) return false;
+    if (year < 2000) {
+        cout << "Date out of range. Try again." << endl;
+        return false;
 
-    if( month > 12) return false;
-    if( day > 31 ) return false;
-    if( day == 31 && ( month == 2 || month == 4 || month == 6 || month == 9 || month == 11 ) ) return false; //30 days in Apr, Jun, Sep, Nov and 28\29 in Feb
+    }
+
+    if( month > 12 || month <= 0) {
+        cout << "Invalid month. Try again" << endl;
+        return false;
+
+    }
+    if( day > 31 ) {
+        cout << "Invalid day. Try again" << endl;
+        return false;
+
+    }
+    if( day == 31 && ( month == 2 || month == 4 || month == 6 || month == 9 || month == 11 ) ) { //30 days in Apr, Jun, Sep, Nov and 28\29 in Feb
+        cout << "Invalid day. Try again" << endl;
+        return false;
+
+    }
+
     if( month == 2) {
-        if( day > 29 ) return false;
-        if( day == 29 && leapOrNot) return false;
+        if( day > 29 ) {
+            cout << "Invalid day. Try again" << endl;
+            return false;
+
+        }
+        if( day == 29 && leapOrNot) {
+            cout << "Invalid day. Try again" << endl;
+            return false;
+
+        }
     }
 
     dateMethods.calculateCurrentDate(currentDate);
-    if (year == currentDate["year"] && month > currentDate["month"]) return false;
+    if (year == currentDate["year"] && month > currentDate["month"]) {
+        cout << "Date out of range. Try again" << endl;
+        return false;
+
+    }
+    if ( year > currentDate["year"]) {
+        cout << "Date out of range. Try again" << endl;
+        return false;
+    }
 
     return true;
 }
@@ -91,7 +127,7 @@ void DateMethods::calculateCurrentDate(map <string, int> &currentDate) {
     currentDate["day"] = day;
 }
 
-int DateMethods::getCurrentMonthFirstDayDate(){
+int DateMethods::getCurrentMonthFirstDayDate() {
     map <string, int> currentDate;
     string currentMonthFirstDayDateSt;
     string yearSt = "", monthSt = "", daySt = "";
@@ -107,7 +143,7 @@ int DateMethods::getCurrentMonthFirstDayDate(){
     return dateMethods.convertStringDateToInt(currentMonthFirstDayDateSt);
 }
 
-int DateMethods::getPreviousMonthLastDayDate(){
+int DateMethods::getPreviousMonthLastDayDate() {
     map <string, int> currentDate;
     string previousMonthLastDayDateSt;
     string yearSt = "", monthSt = "", daySt = "";
@@ -128,7 +164,7 @@ int DateMethods::getPreviousMonthLastDayDate(){
     return dateMethods.convertStringDateToInt(previousMonthLastDayDateSt);
 }
 
-int DateMethods::getPreviousMonthFirstDayDate(){
+int DateMethods::getPreviousMonthFirstDayDate() {
     map <string, int> currentDate;
     string previousMonthFirstDayDateSt;
     string yearSt = "", monthSt = "", daySt = "";
@@ -146,7 +182,7 @@ int DateMethods::getPreviousMonthFirstDayDate(){
     return dateMethods.convertStringDateToInt(previousMonthFirstDayDateSt);
 }
 
-string DateMethods::convertIntDateToStringWithDashes(int dateAsInt){
+string DateMethods::convertIntDateToStringWithDashes(int dateAsInt) {
     string dateAsStringWithDashes = "", dateAsString = "";
     dateAsString = Utils::intToStringConversion(dateAsInt);
     dateAsStringWithDashes = dateAsString.insert(4,"-");

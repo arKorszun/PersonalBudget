@@ -14,11 +14,11 @@ User UserManager::enterUserData() {
     string login = "", name = "", surname = "";
 
     cout << "\nEnter your name: ";
-        name = Utils::getLine();
-        user.name = name;
-        cout << "Enter your surname: ";
-        surname = Utils::getLine();
-        user.surname = surname;
+    name = Utils::getLine();
+    user.name = name;
+    cout << "Enter your surname: ";
+    surname = Utils::getLine();
+    user.surname = surname;
 
     if (users.empty() == true)
         user.id = 1;
@@ -91,17 +91,26 @@ void UserManager::changeUserPassword() {
             isPasswordChanged = userFile.changePasswordInFile(loggedUserId, newPassword);
         }
     }
-    if (isPasswordChanged){
+    if (isPasswordChanged) {
         cout <<"\nPassword updated\n";
     } else {
-    cout <<"\nSomething went wrong! Password has not been updated \n";
+        cout <<"\nSomething went wrong! Password has not been updated \n";
     }
 }
 
-bool UserManager::isUserLoggedIn(){
-if (loggedUserId !=0) return true;
-else return false;
+bool UserManager::isUserLoggedIn() {
+    if (loggedUserId !=0) return true;
+    else return false;
+}
 
+void UserManager::logoutUser() {
+    if (isUserLoggedIn())
+    {
+       loggedUserId = 0;
+    }
+}
+int UserManager::getLoggedUserId() {
+    return loggedUserId;
 }
 
 void UserManager::displayAllUsers() {
