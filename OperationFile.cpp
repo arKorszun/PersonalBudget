@@ -28,7 +28,11 @@ vector <Operation> OperationFile::loadOperationsFromFile (const int loggedUserId
             xml.FindElem( "Amount" );
             amountTemp = xml.GetData();
             operation.amount = stod(amountTemp);
-            operations.push_back(operation);
+
+            if (operation.userId == loggedUserId) {
+                operations.push_back(operation);
+            }
+
             xml.OutOfElem(); // get back to Root
         }
     }
@@ -55,9 +59,9 @@ void OperationFile::addOperationToFile (const Operation &operation) {
     xml.Save(OPERATION_FILE_NAME.c_str());
 }
 
-int OperationFile::getLastId(){
+int OperationFile::getLastId() {
 
-bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );
+    bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );
     string tempString = "";
     int lastId = 0;
     if (!fileExists) {
@@ -71,8 +75,9 @@ bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );
             xml.FindElem( "Id" );
             tempString = xml.GetData();
             lastId = stoi(tempString);
-            }
+            xml.OutOfElem(); // get back to Root
         }
+    }
     return lastId;
 }
 

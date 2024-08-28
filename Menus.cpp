@@ -8,7 +8,7 @@ void Menus::showMainMenu() {
     cout << "2. Sign in" << endl;
     cout << "9. Exit" << endl;
     cout << "---------------------------" << endl;
-    cout << "Choice:";
+    cout << "Choice: ";
 
 }
 void Menus::showUserMenu() {
@@ -24,7 +24,7 @@ void Menus::showUserMenu() {
     cout << "8. Change password" << endl;
     cout << "9. Logout" << endl;
     cout << "---------------------------" << endl;
-    cout << "Choice:";
+    cout << "Choice: ";
 
 
 }

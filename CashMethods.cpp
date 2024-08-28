@@ -1,6 +1,7 @@
 #include "CashMethods.h"
 
 bool CashMethods::validateAmount(string &amount){
+    string amountTemp = "";
     for ( size_t i = 0; i < amount.length(); i++ ){
         if (amount[i] == ',') amount[i] = '.';
     }

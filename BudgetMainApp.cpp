@@ -23,3 +23,9 @@ void BudgetMainApp::logoutUser() {
 void BudgetMainApp::addIncome() {
     budgetManager->addIncome();
 }
+void BudgetMainApp::addExpense() {
+    budgetManager->addExpense();
+}
+void BudgetMainApp::dispAllUserInc(){
+budgetManager->displayAllIncomes();
+}

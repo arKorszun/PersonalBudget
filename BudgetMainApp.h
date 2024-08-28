@@ -33,5 +33,7 @@ public:
     void showPreviousMonthBalance();
     void showCustomPeriodBalance();
 
+    void dispAllUserInc();//test
+
 };
 #endif // BUDGET_MAIN_APP_H

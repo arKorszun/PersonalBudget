@@ -2,20 +2,25 @@
 #include "BudgetMainApp.h"
 #include "BudgetManager.h"
 #include "Menus.h"
+#include "CashMethods.h"
 
+using namespace std;
+
+/*int main() {
+    CashMethods kasa;
+    bool x;
+    string kwaota = "152,25";
+    double kwota;
+    x = kasa.validateAmount(kwaota);
+    kwota = stod(kwaota);
+    cout << kwota;
+
+    return 0;
+}*/
 
 using namespace std;
 
 int main() {
-BudgetMainApp budgetMainApp("users.xml", "incomes.xml", "expenses.xml");
-BudgetManager budgetManager(1,"incomes.xml", "expenses.xml");
-budgetManager.addIncome();
-    return 0;
-}
-
-
-
-/*int main() {
     BudgetMainApp budgetMainApp("users.xml", "incomes.xml", "expenses.xml");
     char choice;
 
@@ -45,13 +50,14 @@ budgetManager.addIncome();
 
             switch (choice) {
             case '1':
-                //Add Income
+                budgetMainApp.addIncome();
                 break;
             case '2':
-                //Add Expense
+                budgetMainApp.addExpense();
                 break;
             case '3':
-                //Show current month balance
+                budgetMainApp.dispAllUserInc();
+                system("pause");
                 break;
             case '4':
                 //Show previous month balance
@@ -60,10 +66,10 @@ budgetManager.addIncome();
                 // Show custom period balance
                 break;
             case '8':
-                // change password
+                budgetMainApp.changeUserPassword();
                 break;
             case '9':
-                // logout
+                budgetMainApp.logoutUser();
                 break;
             default:
                 cout << endl << "You have chosen an option that doesn't exist ." << endl << endl;
@@ -73,4 +79,4 @@ budgetManager.addIncome();
         }
     }
     return 0;
-}*/
+}

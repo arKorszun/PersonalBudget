@@ -19,7 +19,9 @@ class UserManager
 
 public:
     UserManager(string userFileName):userFile(userFileName){
-    users = userFile.loadUsersFromFile();}
+    users = userFile.loadUsersFromFile();
+    loggedUserId = 0;
+    }
 
     void registerUser();
     void loginUser();

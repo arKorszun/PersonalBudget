@@ -93,8 +93,10 @@ void UserManager::changeUserPassword() {
     }
     if (isPasswordChanged) {
         cout <<"\nPassword updated\n";
+        Sleep(400);
     } else {
         cout <<"\nSomething went wrong! Password has not been updated \n";
+        Sleep(400);
     }
 }
 
@@ -118,8 +120,8 @@ void UserManager::displayAllUsers() {
         cout << users[i].id << endl;
         cout << users[i].login << endl;
         cout << users[i].password<< endl;
-
     }
+    system("pause");
 }
 void UserManager::displayLoggedUserId() {
     cout << loggedUserId << endl;

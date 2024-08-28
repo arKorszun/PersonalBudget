@@ -59,18 +59,21 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
         cout << "Enter " << typeDescription << " amount with up to two decimal places: ";
         tempAmount = Utils::getLine();
     } while (!cashMethods.validateAmount(tempAmount));
-    operation.amount = stod(tempAmount);
+
+    float doubleTempAmount = stod(tempAmount);
+    operation.amount = doubleTempAmount;
+
 
     return operation;
 }
 
-void BudgetManager::displayAllExpenses() {
-    for (size_t i = 0; i < expenses.size(); i++ ) {
-        cout << expenses[i].id << endl;
-        cout << expenses[i].userId << endl;
-        cout << expenses[i].date<< endl;
-        cout << expenses[i].item<< endl;
-        cout << expenses[i].amount<< endl;
+void BudgetManager::displayAllIncomes() {
+    for (size_t i = 0; i < incomes.size(); i++ ) {
+        cout << incomes[i].id << endl;
+        cout << incomes[i].userId << endl;
+        cout << incomes[i].date<< endl;
+        cout << incomes[i].item<< endl;
+        cout << incomes[i].amount<< endl;
     }
 
     }
