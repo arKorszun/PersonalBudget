@@ -2,6 +2,7 @@
 #define BUDGET_MANAGER_H
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "Operation.h"
 #include "OperationFile.h"
 #include "Type.h"

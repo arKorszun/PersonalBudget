@@ -56,8 +56,7 @@ int main() {
                 budgetMainApp.addExpense();
                 break;
             case '3':
-                budgetMainApp.dispAllUserInc();
-                system("pause");
+                budgetMainApp.showCurrentMonthBalance();
                 break;
             case '4':
                 //Show previous month balance

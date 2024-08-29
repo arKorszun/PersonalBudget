@@ -6,7 +6,7 @@ using namespace std;
 struct Operation{
 int id, userId, date;
 string item;
-float amount;
+double amount;
 };
 
 #endif // OPERATION_H

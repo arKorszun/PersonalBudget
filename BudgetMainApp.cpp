@@ -29,3 +29,6 @@ void BudgetMainApp::addExpense() {
 void BudgetMainApp::dispAllUserInc(){
 budgetManager->displayAllIncomes();
 }
+void BudgetMainApp::showCurrentMonthBalance(){
+budgetManager->showCurrentMonthBalance();
+}
