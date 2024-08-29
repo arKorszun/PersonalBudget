@@ -67,17 +67,28 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
 }
 
 double BudgetManager::calculateBalance(int startDate, int endDate, const Type &type) {
-
+    double sum = 0;
     switch (type) {
 
     case INCOME:
 
+        for (size_t i = 0; i < incomes.size(); i++ ) {
+            if ((incomes[i].date >= startDate) && (incomes[i].date <= endDate)) {
+                sum += incomes[i].amount;
+            }
+        }
+        return sum;
         break;
     case EXPENSE:
-
+         for (size_t i = 0; i < expenses.size(); i++ ) {
+            if ((expenses[i].date >= startDate) && (expenses[i].date <= endDate)) {
+                sum += expenses[i].amount;
+            }
+        }
+        return sum;
         break;
     }
-
+    return 0;
 }
 
 void BudgetManager::showBalance(int startDate, int endDate) {
@@ -99,7 +110,7 @@ void BudgetManager::showBalance(int startDate, int endDate) {
                 cout <<"No.     " << incomesNumber << endl;
                 cout <<"Date:   " << dateMethods.convertIntDateToStringWithDashes(incomes[i].date) << endl;
                 cout <<"Item:   " << incomes[i].item << endl;
-                cout <<"Amount: " << incomes[i].amount << endl;
+                cout <<"Amount: " << incomes[i].amount << endl << endl;
                 incomesNumber++;
             }
         }
@@ -121,7 +132,7 @@ void BudgetManager::showBalance(int startDate, int endDate) {
                 cout <<"No.     " << expensesNumber << endl;
                 cout <<"Date:   " << dateMethods.convertIntDateToStringWithDashes(expenses[i].date) << endl;
                 cout <<"Item:   " << expenses[i].item << endl;
-                cout <<"Amount: " << expenses[i].amount << endl;
+                cout <<"Amount: " << expenses[i].amount << endl << endl;
                 expensesNumber++;
             }
         }
@@ -137,14 +148,12 @@ void BudgetManager::showBalance(int startDate, int endDate) {
     cout << "--------------------------------------" << endl;
     cout << "Incomes =  " << incomesBalance << endl;
     cout << "Expenses = " << expensesBalance << endl;
-    if (balance > 0){
-        cout << "Congratulations ! you managed to save :" << balance << "PLN" << endl;
-    }
-    else if (balance < 0){
-        cout << "Unfortunately, your expenses have exceeded your income, the balance is:  :" << balance << "PLN" << endl;
-    }
-    else if (balance == 0){
-        cout << "Your balance is equal :" << balance << "PLN" << endl;
+    if (balance > 0) {
+        cout << "Congratulations ! you managed to save :" << balance << " PLN" << endl;
+    } else if (balance < 0) {
+        cout << "Unfortunately, your expenses have exceeded your income, the balance is:  :" << balance << " PLN" << endl;
+    } else if (balance == 0) {
+        cout << "Your balance is equal :" << balance << " PLN" << endl;
     }
     system("pause");
 }
@@ -194,13 +203,3 @@ void BudgetManager::showCustomPeriodBalance() {
 
 }
 
-void BudgetManager::displayAllIncomes() {
-    for (size_t i = 0; i < incomes.size(); i++ ) {
-        cout << incomes[i].id << endl;
-        cout << incomes[i].userId << endl;
-        cout << incomes[i].date<< endl;
-        cout << incomes[i].item<< endl;
-        cout << incomes[i].amount<< endl;
-    }
-
-}

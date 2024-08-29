@@ -6,20 +6,6 @@
 
 using namespace std;
 
-/*int main() {
-    CashMethods kasa;
-    bool x;
-    string kwaota = "152,25";
-    double kwota;
-    x = kasa.validateAmount(kwaota);
-    kwota = stod(kwaota);
-    cout << kwota;
-
-    return 0;
-}*/
-
-using namespace std;
-
 int main() {
     BudgetMainApp budgetMainApp("users.xml", "incomes.xml", "expenses.xml");
     char choice;
@@ -59,10 +45,10 @@ int main() {
                 budgetMainApp.showCurrentMonthBalance();
                 break;
             case '4':
-                //Show previous month balance
+                budgetMainApp.showPreviousMonthBalance();
                 break;
             case '5':
-                // Show custom period balance
+                budgetMainApp.showCustomPeriodBalance();
                 break;
             case '8':
                 budgetMainApp.changeUserPassword();

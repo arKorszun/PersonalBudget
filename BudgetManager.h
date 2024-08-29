@@ -35,9 +35,5 @@ public:
     void showPreviousMonthBalance();
     void showCustomPeriodBalance();
 
-    void displayAllIncomes(); //test
-
-
-
 };
 #endif // BUDGET_MANAGER_H
