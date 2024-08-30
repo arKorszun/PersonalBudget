@@ -2,6 +2,7 @@
 #define OPERATION_FILE_H
 #include <iostream>
 #include <vector>
+#include <iomanip>
 #include "File.h"
 #include "Operation.h"
 
@@ -17,7 +18,7 @@ public:
         lastOperationId = 0;
     };
     vector <Operation> loadOperationsFromFile (const int loggedUserId);
-    void addOperationToFile (const Operation &operation); //mozna dac bool sprawdzajcy czy dodalo wpis
+    void addOperationToFile (const Operation &operation);
     int getLastId();
 
 

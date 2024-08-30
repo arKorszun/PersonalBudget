@@ -3,9 +3,9 @@
 vector <Operation> OperationFile::loadOperationsFromFile (const int loggedUserId) {
 
     Operation operation;
-    CMarkup xml;
+
     vector <Operation> operations;
-    bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );//nazwa? , kod razy dwa dla kazdego pliku?
+    bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );
     string idTemp = "", userIdTemp = "", dateTemp = "", amountTemp = "";
     if (!fileExists) {
     } else {
@@ -41,7 +41,11 @@ vector <Operation> OperationFile::loadOperationsFromFile (const int loggedUserId
 }
 void OperationFile::addOperationToFile (const Operation &operation) {
 
-    CMarkup xml;
+    string amount = "";
+    ostringstream ss;
+    ss << fixed << setprecision(2) << operation.amount;
+    amount = ss.str();
+
     bool fileExists = xml.Load( OPERATION_FILE_NAME.c_str() );
     if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -55,7 +59,7 @@ void OperationFile::addOperationToFile (const Operation &operation) {
     xml.AddElem("UserId", operation.userId);
     xml.AddElem("Date", operation.date);
     xml.AddElem("Item", operation.item);
-    xml.AddElem("Amount", operation.amount);
+    xml.AddElem("Amount", amount);
     xml.Save(OPERATION_FILE_NAME.c_str());
 }
 

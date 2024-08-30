@@ -26,13 +26,11 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
     switch (type) {
 
     case INCOME:
-        if(incomes.empty()) operation.id = 1;
-        else operation.id = incomeFile.getLastId() + 1;
+        operation.id = incomeFile.getLastId() + 1;
         typeDescription = "income";
         break;
     case EXPENSE:
-        if(expenses.empty()) operation.id = 1;
-        else operation.id = expenseFile.getLastId() + 1;
+        operation.id = expenseFile.getLastId() + 1;
         typeDescription = "expense";
         break;
     }
@@ -43,7 +41,7 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
         cout << "Enter " << typeDescription << " date (yyyy-mm-dd). Type 't' if you want to enter current date: ";
         tempDate = Utils::getLine();
         if (tempDate == "t") {
-            tempDate = dateMethods.convertIntDateToStringWithDashes(dateMethods.getCurrentDate());  //mozna optymalizowac
+            tempDate = dateMethods.convertIntDateToStringWithDashes(dateMethods.getCurrentDate());
             isDateValid = true;
         } else {
             isDateValid=dateMethods.validateDate(tempDate);
@@ -58,8 +56,7 @@ Operation BudgetManager::addOperationDetails(const Type &type) {
         cout << "Enter " << typeDescription << " amount with up to two decimal places: ";
         tempAmount = Utils::getLine();
     } while (!cashMethods.validateAmount(tempAmount));
-
-    float doubleTempAmount = stod(tempAmount);
+    double doubleTempAmount = stod(tempAmount);
     operation.amount = doubleTempAmount;
 
 
@@ -97,7 +94,7 @@ void BudgetManager::showBalance(int startDate, int endDate) {
     double incomesBalance = 0, expensesBalance = 0, balance = 0;
 
     system("cls");
-
+    cout << fixed << setprecision(2);
     sort( incomes.begin(), incomes.end(),
     []( const Operation &left, const Operation &right ) {
         return ( left.date > right.date );
@@ -146,8 +143,8 @@ void BudgetManager::showBalance(int startDate, int endDate) {
     balance = incomesBalance - expensesBalance;
     cout << "         >>> BALANCE <<<" << endl;
     cout << "--------------------------------------" << endl;
-    cout << "Incomes =  " << incomesBalance << endl;
-    cout << "Expenses = " << expensesBalance << endl;
+    cout << "Incomes =  " << incomesBalance << " PLN" << endl;
+    cout << "Expenses = " << expensesBalance << " PLN" << endl << endl;
     if (balance > 0) {
         cout << "Congratulations ! you managed to save :" << balance << " PLN" << endl;
     } else if (balance < 0) {
@@ -195,6 +192,10 @@ void BudgetManager::showCustomPeriodBalance() {
             isDateValid = true;
         } else {
             isDateValid=dateMethods.validateDate(tempEndDate);
+            if (startDate > (dateMethods.convertStringDateToInt(tempEndDate))){
+                cout << "The start date can't be later than the end date" << endl;
+                isDateValid = false;
+            }
         }
     } while (!isDateValid);
     endDate = dateMethods.convertStringDateToInt(tempEndDate);

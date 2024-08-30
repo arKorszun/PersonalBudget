@@ -70,6 +70,7 @@ void UserManager::loginUser() {
                 }
             }
             cout << "\nYou've entered wrong password 3 times!" << endl;
+            Sleep(3000);
             system("pause");
             return;
         }
